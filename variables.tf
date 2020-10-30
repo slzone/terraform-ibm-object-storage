@@ -12,16 +12,19 @@ variable "resource_location" {
 variable "cluster_id" {
   type        = string
   description = "Id of the cluster"
+  default     = ""
 }
 
 variable "namespace_count" {
   type        = number
   description = "The number of namespaces"
+  default     = 0
 }
 
 variable "namespaces" {
   type        = list(string)
   description = "Namespaces"
+  default     = []
 }
 
 variable "tags" {
@@ -40,4 +43,21 @@ variable "plan" {
   type        = string
   description = "The type of plan the service instance should run under (lite or standard)"
   default     = "standard"
+}
+
+variable "provision" {
+  type        = bool
+  description = "Flag indicating that key-protect instance should be provisioned"
+}
+
+variable "name" {
+  type        = string
+  description = "The name that should be used for the service, particularly when connecting to an existing service. If not provided then the name will be defaulted to {name prefix}-{service}"
+  default     = ""
+}
+
+variable "cluster_name" {
+  type        = string
+  description = "The name of the cluster"
+  default     = ""
 }
