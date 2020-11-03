@@ -63,7 +63,7 @@ resource "ibm_container_bind_service" "cos_binding" {
   service_instance_name       = local.name
   namespace_id                = var.namespaces[count.index]
   resource_group_id           = data.ibm_resource_group.resource_group.id
-  key                         = ibm_resource_key.cos_credentials.name
+  key                         = ibm_resource_key.cos_credentials[0].name
 
   // The provider (v16.1) is incorrectly registering that these values change each time,
   // this may be removed in the future if this is fixed.
