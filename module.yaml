@@ -1,0 +1,13 @@
+name: ibm-object-storage
+type: terraform
+description: Module to provision Object Storage instance
+tags:
+    - tools
+    - infrastructure
+    - object storage
+    - saas
+versions:
+- platforms:
+    - kubernetes
+    - ocp3
+    - ocp4
