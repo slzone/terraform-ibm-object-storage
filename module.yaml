@@ -1,17 +1,18 @@
 name: ibm-object-storage
 alias: cos
 type: terraform
-description: Module to provision Object Storage instance
+description: |
+  Module to work with an IBM Cloud Object Storage instance. If the `provision` flag is true then an new instance
+  of IBM Cloud Object Storage is provisioned. Otherwise, the module will find an existing instance with the
+  provided name and create a credential. The name and id of the Object Storage instance as well as the name and id
+  of the credential instance are exported from the module for use by other modules.
 tags:
     - tools
     - infrastructure
     - object storage
     - saas
 versions:
-- platforms:
-    - kubernetes
-    - ocp3
-    - ocp4
+- platforms: []
   variables:
     - name: resource_group_name
       scope: global

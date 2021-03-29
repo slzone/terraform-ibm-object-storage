@@ -1,6 +1,6 @@
-# Object Storage terraform module
+# IBM Object Storage terraform module
 
-Terraform module to provision Object Storage in the IBM Cloud account
+Module to work with an IBM Cloud Object Storage instance. If the `provision` flag is true then an new instance of IBM Cloud Object Storage is provisioned. Otherwise, the module will find an existing instance with the provided name and create a credential. The name and id of the Object Storage instance as well as the name and id of the credential instance are exported from the module for use by other modules.
 
 ## Software dependencies
 
@@ -17,21 +17,17 @@ The module depends on the following software components:
 
 ## Module dependencies
 
-This module makes use of the output from other modules:
-
-- Cluster - github.com/ibm-garage-cloud/terraform-ibm-container-platform.git
+None
 
 ## Example usage
 
 ```hcl-terraform
-module "dev_object_storage" {
-  source = "github.com/ibm-garage-cloud/terraform-ibm-object-storage.git?ref=v1.0.0"
+module "cos" {
+  source = "github.com/ibm-garage-cloud/terraform-ibm-object-storage.git?ref=v2.1.0"
 
-  resource_group_name = module.dev_cluster.resource_group_name
-  resource_location   = module.dev_cluster.region
-  cluster_id          = module.dev_cluster.id
-  namespaces          = module.dev_tools_namespace.name
-  namespace_count     = var.release_namespace_count
+  resource_group_name = var.resource_group_name
   name_prefix         = var.name_prefix
+  provision           = var.cos_provision
+  resource_location   = var.cos_resource_location
 }
 ```
