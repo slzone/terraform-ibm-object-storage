@@ -3,4 +3,5 @@ module "dev_object-storage" {
 
   provision = true
   resource_group_name = var.resource_group_name
+  name_prefix = var.name_prefix
 }
