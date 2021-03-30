@@ -8,12 +8,12 @@ The module depends on the following software components:
 
 ### Command-line tools
 
-- terraform - v12
+- terraform - v13
 - kubectl
 
 ### Terraform providers
 
-- IBM Cloud provider >= 1.5.3
+- IBM Cloud provider >= 1.18
 
 ## Module dependencies
 
