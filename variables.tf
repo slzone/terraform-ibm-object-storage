@@ -30,6 +30,7 @@ variable "plan" {
 variable "provision" {
   type        = bool
   description = "Flag indicating that key-protect instance should be provisioned"
+  default     = true
 }
 
 variable "name" {
