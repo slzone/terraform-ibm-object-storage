@@ -17,6 +17,7 @@ locals {
   name        = var.name != "" ? var.name : "${replace(local.name_prefix, "/[^a-zA-Z0-9_\\-\\.]/", "")}-cos"
   key_name    = "${local.name}-key"
   module_path = substr(path.module, 0, 1) == "/" ? path.module : "./${path.module}"
+  tags        = setsubtract(var.tags, [""])
 }
 
 // COS Cloud Object Storage
@@ -28,7 +29,7 @@ resource ibm_resource_instance cos_instance {
   plan              = var.plan
   location          = var.resource_location
   resource_group_id = data.ibm_resource_group.resource_group.id
-  tags              = var.tags
+  tags              = local.tags
 
   timeouts {
     create = "15m"
