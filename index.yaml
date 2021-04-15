@@ -33,12 +33,16 @@ versions:
         type: string
       - name: resource_location
         type: string
+        default: global
       - name: tags
         type: string
+        default: ""
       - name: plan
         type: string
+        default: standard
       - name: provision
         type: string
+        default: "true"
     version: v3.0.3
     outputs:
       - name: name
