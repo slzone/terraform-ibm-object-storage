@@ -35,7 +35,7 @@ versions:
         type: string
         default: global
       - name: tags
-        type: string
+        type: list(string)
         default: ""
       - name: plan
         type: string
