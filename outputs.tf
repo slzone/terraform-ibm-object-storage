@@ -11,8 +11,8 @@ output "id" {
 }
 
 output "crn" {
-  description = "The crn of the Object Storage instance id"
-  value       = data.ibm_resource_instance.cos_instance.guid
+  description = "The crn of the Object Storage instance"
+  value       = data.ibm_resource_instance.cos_instance.id
   depends_on  = [data.ibm_resource_instance.cos_instance]
 }
 
