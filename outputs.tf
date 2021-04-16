@@ -10,6 +10,12 @@ output "id" {
   depends_on  = [data.ibm_resource_instance.cos_instance]
 }
 
+output "crn" {
+  description = "The crn of the Object Storage instance id"
+  value       = data.ibm_resource_instance.cos_instance.guid
+  depends_on  = [data.ibm_resource_instance.cos_instance]
+}
+
 output "location" {
   description = "The Object Storage instance location"
   value       = var.resource_location
