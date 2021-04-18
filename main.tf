@@ -18,6 +18,7 @@ locals {
   key_name    = "${local.name}-key"
   module_path = substr(path.module, 0, 1) == "/" ? path.module : "./${path.module}"
   tags        = setsubtract(var.tags, [""])
+  service     = "cloud-object-storage"
 }
 
 // COS Cloud Object Storage
@@ -25,7 +26,7 @@ resource ibm_resource_instance cos_instance {
   count             = var.provision ? 1 : 0
 
   name              = local.name
-  service           = "cloud-object-storage"
+  service           = local.service
   plan              = var.plan
   location          = var.resource_location
   resource_group_id = data.ibm_resource_group.resource_group.id
@@ -42,7 +43,7 @@ data ibm_resource_instance cos_instance {
   depends_on        = [ibm_resource_instance.cos_instance]
 
   name              = local.name
-  service           = "cloud-object-storage"
+  service           = local.service
   location          = var.resource_location
   resource_group_id = data.ibm_resource_group.resource_group.id
 }
