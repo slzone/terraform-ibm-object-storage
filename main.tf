@@ -14,7 +14,7 @@ data "ibm_resource_group" "resource_group" {
 locals {
   role        = "Manager"
   name_prefix = var.name_prefix != "" ? var.name_prefix : var.resource_group_name
-  name        = var.name != "" ? var.name : "${replace(local.name_prefix, "/[^a-zA-Z0-9_\\-\\.]/", "")}-cos"
+  name        = var.name != "" ? var.name : "${replace(local.name_prefix, "/[^a-zA-Z0-9_\\-\\.]/", "")}-${var.label}"
   key_name    = "${local.name}-key"
   module_path = substr(path.module, 0, 1) == "/" ? path.module : "./${path.module}"
   tags        = setsubtract(var.tags, [""])

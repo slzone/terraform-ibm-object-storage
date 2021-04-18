@@ -32,7 +32,13 @@ output "key_id" {
 }
 
 output "service" {
-  description = "The name of the key provisioned for the redis instance"
+  description = "The name of the key provisioned for the Object Storage instance"
   value       = local.service
+  depends_on = [data.ibm_resource_instance.cos_instance]
+}
+
+output "label" {
+  description = "The label used for the Object Storage instance"
+  value       = var.label
   depends_on = [data.ibm_resource_instance.cos_instance]
 }
