@@ -30,7 +30,7 @@ module "ibm-cos-bucket" {
 ## Outputs
 | Name         | Description                     |
 |--------------|---------------------------------|
-| cos_instance | The details of the cos bucket.  |
+| cos_bucket   | The details of the cos bucket.  |
 
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
