@@ -1,19 +1,16 @@
-# COS instance Module
+# COS Bucket Module
 
-This module is used to create a COS instance.
+This module is used to create a COS bucket.
 
 ## Example Usage
 ```
-module "ibm-cos-instance" {
-  source = "../../modules/ibm-cos-instance"
-  name              = var.name
-  service           = var.service
-  plan              = var.plan
-  location          = var.resource_location
-  resource_group_id = data.ibm_resource_group.resource_group.id
-  tags              = var.tags
-}
-
+module "ibm-cos-bucket" {
+  source = "../../modules/ibm-cos-bucket"
+  bucket_name             = var.bucket_name
+  resource_instance_id    = data.ibm_resource_instance.cos_instance.id
+  cross_region_location   = var.region
+  storage_class           = var.storage_class
+  }
 
 ```
 
@@ -22,15 +19,18 @@ module "ibm-cos-instance" {
 
 | Name           | Description                                                      | Type   |Default  |Required |
 |----------------|------------------------------------------------------------------|--------|---------|---------|
-| name           | A descriptive name used to identify the resource instance        | string | n/a     | yes     |
+| bucket_name    | Name of the bucket                                               | string | n/a     | yes     |
 | plan           | The name of the plan type supported by service.                  | string | n/a     | yes     |
-| location       | Target location or environment to create the resource instance.  | string | n/a     | yes     |
+| location       | Target location or environment to create the bucket.             | string | n/a     | yes     |
 | resource_group | Name of the resource group                                       | string | n/a     | yes     |
+| region         | Target location or environment to create the resource instance.  |	string | n/a     | yes     |
+| storage_class	 | Storage class to use for the bucket	                            | string | n/a	   | yes     |
+
 
 ## Outputs
 | Name         | Description                     |
 |--------------|---------------------------------|
-| cos_instance | The details of the cos Instance.|
+| cos_instance | The details of the cos bucket.  |
 
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
@@ -45,6 +45,7 @@ $ terraform init
 $ terraform plan 
 $ terraform apply
 ```
+
 
 Run `terraform destroy` when you don't need these resources.
 
